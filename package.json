@@ -1,0 +1,38 @@
+{
+  "name": "mcp-ai-agent",
+  "version": "1.0.0",
+  "description": "An AI agent that conducts research and generates blog posts based on the research data.",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "axios": "^0.21.4",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^16.5.0",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.7.10",
+    "@types/node-fetch": "^2.6.12",
+    "jest": "^27.0.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mcp-ai-agent.git"
+  },
+  "keywords": [
+    "AI",
+    "research",
+    "blog",
+    "web scraping"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
