@@ -1,10 +1,11 @@
 import axios from "axios";
+const args = require("minimist")(process.argv.slice(2)); // Parse command-line arguments
 
-// Load the API key from environment variables
-const OPENAI_API_KEY = '***REMOVED***';
+// Load the API key from command-line arguments
+const OPENAI_API_KEY = args.apiKey;
 
 if (!OPENAI_API_KEY) {
-    throw new Error("OpenAI API key is missing. Set it in the environment variables.");
+    throw new Error("OpenAI API key is missing. Pass it as a command-line argument using --apiKey.");
 }
 
 exports.scrapeWebData = async function (topic: string) {
@@ -37,12 +38,7 @@ exports.scrapeWebData = async function (topic: string) {
         return generatedData; // Return the generated data
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (axios.isAxiosError(error)) {
-                const axiosError = error as import("axios").AxiosError;
-                console.error("Axios error generating data with OpenAI:", axiosError.response?.data || axiosError.message);
-            } else {
-                console.error("Error generating data with OpenAI:", (error as Error).message);
-            }
+            console.error("Axios error generating data with OpenAI:", error.response?.data || error.message);
         } else if (error instanceof Error) {
             console.error("Error generating data with OpenAI:", error.message);
         } else {
