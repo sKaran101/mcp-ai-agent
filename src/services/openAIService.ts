@@ -1,14 +1,14 @@
 const axios = require("axios");
+const args = require("minimist")(process.argv.slice(2)); // Parse command-line arguments
 
-console.log("Loaded OpenAI API Key:", process.env.OPENAI_API_KEY);
-// Load the API key from environment variables
-const OPENAI_API_KEY = '***REMOVED***';
-
-console.log("Loaded OpenAI API Key:", OPENAI_API_KEY); // Debugging line
+// Load the API key from command-line arguments
+const OPENAI_API_KEY = args.apiKey;
 
 if (!OPENAI_API_KEY) {
-    throw new Error("OpenAI API key is missing. Set it in the environment variables.");
+    throw new Error("OpenAI API key is missing. Pass it as a command-line argument using --apiKey.");
 }
+
+console.log("Loaded OpenAI API Key:", OPENAI_API_KEY); // Debugging line
 
 exports.generateBlogWithOpenAI = async function (researchData: { title: string; summary: string; keyPoints: string[] }) {
     console.log("Generating blog using OpenAI...");
@@ -45,7 +45,8 @@ exports.generateBlogWithOpenAI = async function (researchData: { title: string; 
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (axios.isAxiosError(error)) {
-                console.error("Axios error generating blog with OpenAI:", (error as any).response?.data || (error as Error).message);
+                const axiosError = error as import("axios").AxiosError;
+                console.error("Axios error generating blog with OpenAI:", axiosError.response?.data || axiosError.message);
             } else {
                 console.error("Error generating blog with OpenAI:", (error as Error).message);
             }
