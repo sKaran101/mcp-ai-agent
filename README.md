@@ -50,6 +50,12 @@ mcp-ai-agent
    ```
    npm start
    ```
+2. Run the application:
+   ```
+   npx ts-node src/app.ts --apiKey=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   ```
+   [In the project testing is done using OpenAI Api key]
+
 2. The application will initialize the Research Agent to fetch data from the web and then pass that data to the Blog Agent to generate a blog post.
 
 ## Agents
@@ -70,6 +76,7 @@ mcp-ai-agent
 
 ## Contributing
 Contributions are welcome! Please submit a pull request or open an issue for any suggestions or improvements.
+
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
