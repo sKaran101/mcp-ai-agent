@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Load the API key from environment variables
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = '***REMOVED***';
 
 if (!OPENAI_API_KEY) {
     throw new Error("OpenAI API key is missing. Set it in the environment variables.");
